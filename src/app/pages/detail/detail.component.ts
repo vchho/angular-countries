@@ -18,11 +18,11 @@ export class DetailComponent implements OnInit {
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
       this.country = this.api.getCountryByName(params.country).pipe(
-        tap((res) => console.log(`from tap`, res)),
+        tap((res) => res),
         // mergeMap operator is best used when you wish to flatten an
         // inner observable but want to manually control the number of inner subscriptions.
         mergeMap((res) => {
-          console.log(`from mergeMap`, res);
+          // console.log(`from mergeMap`, res);
           this.borderCountries = this.api.getCountryByCodes(res.borders);
           // of returns an Observable that emits the arguments described above and then completes.
           return of(res);

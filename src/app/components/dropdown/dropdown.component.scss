@@ -12,6 +12,10 @@
     justify-content: space-between;
   }
 
+  .fa {
+    cursor: pointer;
+  }
+
   &-options {
     border-radius: 0.25rem;
     position: absolute;
@@ -21,7 +25,7 @@
     width: 100%;
     list-style: none;
     padding-left: 1rem;
-
+    cursor: pointer;
     li {
       padding: 0.5rem;
     }
