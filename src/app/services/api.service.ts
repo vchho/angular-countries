@@ -7,7 +7,7 @@ import { map } from 'rxjs/operators';
   providedIn: 'root',
 })
 export class ApiService {
-  private api = 'https://restcountries.eu/rest/v2';
+  private api = 'https://restcountries.com/v2';
 
   constructor(private http: HttpClient) {}
 
