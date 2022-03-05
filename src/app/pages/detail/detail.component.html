@@ -49,18 +49,28 @@
       </div>
       <div class="border-countries">
         <p><strong>Border Countries:</strong></p>
-        <div
-          *ngIf="borderCountries | async; let borderCountries"
+        <ng-container
+          *ngIf="borderCountries | async as borderCountries; else empty"
           class="border-countries-buttons"
         >
-          <div
-            *ngFor="let borderCountry of borderCountries"
-            class="button shadow"
-            [routerLink]="'/' + borderCountry.name"
+          <ng-container
+            *ngIf="borderCountries.length > 0; else empty"
           >
-            {{ borderCountry.name }}
-          </div>
-        </div>
+            <ng-container 
+              *ngFor="let borderCountry of borderCountries"
+              class="button shadow"
+              [routerLink]="'/' + borderCountry.name"
+            >
+              {{ borderCountry.name }}
+            </ng-container>
+          </ng-container>
+        </ng-container>
+        <ng-template #empty>
+          <p>This country has no border countries</p>
+        </ng-template>
+        <!-- <ng-template *ngIf="borderCountries | async; let borderCountries">
+          <p *ngIf="borderCountries.length === 0">This country has no border countries</p>
+        </ng-template> -->
       </div>
     </div>
   </div>
