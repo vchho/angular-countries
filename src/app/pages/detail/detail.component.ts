@@ -12,7 +12,7 @@ import { tap, mergeMap } from 'rxjs/operators';
 })
 export class DetailComponent implements OnInit {
   country: Observable<Country>;
-  borderCountries: Observable<Country[]>;
+  borderCountries: Observable<Country[]> | Observable<any[]>;
   constructor(private api: ApiService, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
@@ -22,7 +22,6 @@ export class DetailComponent implements OnInit {
         // mergeMap operator is best used when you wish to flatten an
         // inner observable but want to manually control the number of inner subscriptions.
         mergeMap((res) => {
-          // console.log(`from mergeMap`, res);
           this.borderCountries = this.api.getCountryByCodes(res.borders);
           // of returns an Observable that emits the arguments described above and then completes.
           return of(res);
